@@ -1,0 +1,33 @@
+.todo-values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 36px 25px 50px;
+  border-bottom: 1px dashed rgba(143, 168, 193, 0.3);
+}
+.todo-values .todo-text {
+  width: 340px;
+  word-break: break-all;
+}
+.todo-values .todo-text button {
+  background-color: transparent;
+  border: transparent;
+  text-align: start;
+  color: rgba(143, 168, 193, 1);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+.todo-btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-btn {
+  width: 24px;
+  height: 23px;
+  border: transparent;
+  background-color: transparent;
+  margin-left: 11px;
+}

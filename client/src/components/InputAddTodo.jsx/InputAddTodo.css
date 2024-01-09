@@ -1,0 +1,25 @@
+.InputAddTodo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 36px 50px 39px;
+  gap: 8px;
+}
+.InputAddTodo-container input {
+  width: 297px;
+  height: 40px;
+  padding: 12px 15px;
+  background-color: transparent;
+  border: 1px solid rgba(143, 168, 193, 0.5);
+  border-radius: 4px;
+  color: rgba(143, 168, 193, 1);
+}
+input:focus {
+  outline: transparent;
+}
+
+input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(143, 168, 193, 1);
+}

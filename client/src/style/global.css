@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+body {
+  background-color: rgba(30, 30, 30, 1);
+  height: 1040px;
+}
+#root {
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+ul {
+  list-style-type: none;
+}
+button {
+  cursor: pointer;
+}

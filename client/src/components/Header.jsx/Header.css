@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 27px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: rgba(143, 168, 193, 1);
+  font-weight: 700;
+  line-height: 42px;
+}

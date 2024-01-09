@@ -1,0 +1,26 @@
+.EditSection-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 50px 25px;
+  gap: 8px;
+  border-bottom: 1px dashed rgba(143, 168, 193, 0.3);
+}
+.EditSection-container input {
+  width: 234;
+  height: 40px;
+  padding: 12px 15px;
+  background-color: transparent;
+  border: 1px solid rgba(143, 168, 193, 0.5);
+  border-radius: 4px;
+  color: rgba(143, 168, 193, 1);
+}
+input:focus {
+  outline: transparent;
+}
+
+input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(143, 168, 193, 1);
+}
