@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const todoValues = [
+const todoValue = [
   {
     id: uuidv4(),
     todo: "hello",
