@@ -4,28 +4,28 @@ import "./EditSection.css";
 export function EditSection({
   handleId,
   handleUpdate,
-  setTodoValue,
-  newTodoValue,
+  setUpdatedTodo,
+  updatedTodo,
 }) {
   function handleEditSubmit(e) {
     e.preventDefault();
-    if (!newTodoValue) return;
+    if (!updatedTodo) return;
     handleUpdate();
-    setTodoValue("");
+    setUpdatedTodo("");
     handleId();
   }
 
   function handleChange(e) {
-    setTodoValue(e.target.value);
+    setUpdatedTodo(e.target.value);
   }
 
   return (
     <form className="EditSection-container" onSubmit={handleEditSubmit}>
       <input
         type="text"
-        id={newTodoValue}
+        id={updatedTodo}
         placeholder="Edit Todo"
-        defaultValue={newTodoValue}
+        defaultValue={updatedTodo}
         onChange={handleChange}
       />
 

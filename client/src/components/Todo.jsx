@@ -5,13 +5,14 @@ import "./Todo.css";
 import { TodoValues } from "./TodoValues/TodoValues";
 import axios from "axios";
 
-const API = "http://localhost:3005/api/todo";
+const API = "http://localhost:3006/api/todo";
 
 function Todo() {
   const [description, setDescription] = useState([]);
   const [fieldInput, setFieldInput] = useState("");
   const [todoId, setTodoId] = useState(null);
-  const [newTodoValue, setTodoValue] = useState("");
+  // const [newTodo, setNewTodo] = useState("");
+  const [updatedTodo, setUpdatedTodo] = useState("");
   const [newPicked, setNewPicked] = useState(false);
 
   function handleSubmitValue(e) {
@@ -33,60 +34,62 @@ function Todo() {
           todo: fieldInput,
         },
       });
-      setDescription(res.data);
+      description.push(res.data);
+      fetchTodo();
     } catch (error) {
       console.error(error.response.data.message);
     }
   }
 
-  function handleId(id) {
-    setTodoId((todoId) => (todoId === id ? null : id));
-    setTodoValue("");
+  function handleId(_id) {
+    setTodoId((todoId) => (todoId === _id ? null : _id));
+    setUpdatedTodo("");
   }
-  async function handleDelete(id) {
+  async function handleDelete(_id) {
     try {
       const res = await axios(API, {
         method: "DELETE",
         data: {
-          id,
+          _id,
         },
       });
-      setDescription(res.data);
+      description.push(res.data);
+      fetchTodo();
     } catch (error) {
       console.error(error.response.data.message);
     }
   }
-
-  async function handleUpdate() {
-    if (handleId) {
-      try {
-        const res = await axios(API, {
-          method: "PUT",
-          data: {
-            id: todoId,
-            todo: newTodoValue,
-            picked: false,
-          },
-        });
-
-        setDescription(res.data);
-      } catch (error) {
-        console.error(error.response.data.message);
-      }
-    }
-  }
-
-  function handletoggle(id) {
+  function handleToggle(_id) {
     setDescription((description) =>
       description.map((items) =>
-        items.id === id ? { ...items, picked: !items.picked } : items
+        items._id === _id ? { ...items, picked: !items.picked } : items
       )
     );
+    handleUpdate();
+    console.log("Clicked");
+  }
+
+  async function handleUpdate() {
+    try {
+      const res = await axios(API, {
+        method: "PUT",
+        data: {
+          _id: todoId,
+          todo: updatedTodo,
+          picked: newPicked,
+        },
+      });
+      description.push(res.data);
+      fetchTodo();
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   }
 
   async function fetchTodo() {
     try {
       const res = await axios(API);
+      console.log(res.data);
       setDescription(res.data);
     } catch (error) {
       console.error(error.response.data.message);
@@ -117,9 +120,9 @@ function Todo() {
               handleId={handleId}
               handleDelete={handleDelete}
               handleUpdate={handleUpdate}
-              setTodoValue={setTodoValue}
-              newTodoValue={newTodoValue}
-              handletoggle={handletoggle}
+              setUpdatedTodo={setUpdatedTodo}
+              updatedTodo={updatedTodo}
+              handleToggle={handleToggle}
               setDescription={setDescription}
             />
           </div>
